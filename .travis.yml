@@ -13,5 +13,5 @@ script:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then node_modules/.bin/build -l; fi
   - zip -r dist.zip dist
 after_success:
-   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then curl --ftp-create-dirs -T dist.zip -u $FTP_USER:$FTP_PASSWORD $FTP_URL/phoneTemplate/mac; fi
-   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then curl --ftp-create-dirs -T dist.zip -u $FTP_USER:$FTP_PASSWORD $FTP_URL/phoneTemplate/linux; fi
+   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sshpass -p $FTP_PASSWORD scp -r dist.zip $FTP_URL:/mac/dist.zip; fi
+   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sshpass -p $FTP_PASSWORD scp -r dist.zip $FTP_URL:/mac/dist.zip; fi
