@@ -17,7 +17,8 @@ after_success:
    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sshpass -p $FTP_PASSWORD scp -r dist.zip $FTP_URL:/mac/dist.zip; fi
 deploy:
   provider: releases
-  user: "penagwin"
-  password: $GITHUB
+  api_key: $TR
   file: dist.zip
   skip_cleanup: true
+  on:
+    tags: true
