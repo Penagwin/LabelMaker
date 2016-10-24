@@ -11,7 +11,7 @@ before_install:
 script:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then node_modules/.bin/build -m; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then node_modules/.bin/build -l; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then rvm use ruby-2.0.0-p648; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rvm use ruby-2.0.0-p648; fi
   - zip -r dist.zip dist
 
 deploy:
