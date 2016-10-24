@@ -5,7 +5,6 @@ os:
   - linux
   - osx
 
-
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install sshpass; fi
   - npm i
@@ -22,5 +21,3 @@ deploy:
   password: $GITHUB
   file: dist.zip
   skip_cleanup: true
-  on:
-    tags: true
