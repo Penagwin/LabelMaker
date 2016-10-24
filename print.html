@@ -14,6 +14,10 @@ img{
 }
 </style>
 <body>
-<img src="temp.svg"></img>
+<img src="" id="img"}/temp.svg`></img>
+<script type="text/javascript">
+	app = require('electron').remote.app
+	document.getElementById("img").src=`file://${app.getPath("temp")}/temp.svg`;
+</script>
 </body>
 </html>

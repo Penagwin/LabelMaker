@@ -1,12 +1,23 @@
 {
   "name": "phone",
   "version": "1.0.0",
-  "description": "",
-  "main": "test.js",
+  "description": "A label creator",
+  "main": "app.js",
   "dependencies": {
-    "nopt": "^3.0.6"
+    "electron-squirrel-startup": "^1.0.0",
+    "nopt": "^3.0.6",
+    "open": "0.0.5",
+    "uuid": "^2.0.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "electron": "^1.4.4",
+    "electron-builder": "^7.14.2",
+    "electron-squirrel-startup": "^1.0.0"
+  },
+  "build": {
+    "appId": "your.id",
+    "category": "your.app.category.type"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

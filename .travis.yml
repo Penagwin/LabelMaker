@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - "6"
+os:
+  - linux
+  - osx
+
+
+before_install:
+  - npm i
+script:
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; node_modules/.bin/build -m
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; node_modules/.bin/build -l
+  - zip -r dist.zip dist
+after_success:
+    "curl --ftp-create-dirs -T uploadfilename -u $FTP_USER:$FTP_PASSWORD ftp://bedrock.penagw.in/phoneTemplate"
