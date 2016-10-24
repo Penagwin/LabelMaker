@@ -6,15 +6,12 @@ os:
   - osx
 
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install sshpass; fi
   - npm i
 script:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then node_modules/.bin/build -m; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then node_modules/.bin/build -l; fi
   - zip -r dist.zip dist
-after_success:
-   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sshpass -p $FTP_PASSWORD scp -r dist.zip $FTP_URL:/mac/dist.zip; fi
-   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sshpass -p $FTP_PASSWORD scp -r dist.zip $FTP_URL:/mac/dist.zip; fi
+
 deploy:
   provider: releases
   api_key: $TR
