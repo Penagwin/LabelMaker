@@ -1,0 +1,58 @@
+<html>
+<script src="jquery.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+const { ipcRenderer } = require('electron');
+function loaded() {
+
+document.getElementById('form').addEventListener('submit', (event) => {
+    event.preventDefault();
+    ipcRenderer.send('submit', {
+        phone: $("#phone").val(),
+        carrier: $("#carrier").val(),
+        os: $("#os").val(),
+        storage: $("#storage").val(),
+        price: $("#price").val()
+    });
+}, false);
+}
+window.addEventListener("load", loaded, false);
+
+</script>
+<style type="text/css">
+	
+@media print {  
+    @page {  
+    	margin: 0px;
+    	padding-bottom: .1in;
+      size:4.25in 5.5in ;  
+    }  
+}
+
+img{
+	width:100%;
+}
+</style>
+	<body>
+		<form id="form">
+		<table>
+			<tr>
+				<td> Phone: </td>
+				<td> <input type="text" id="phone"> </td>
+			</tr>
+			<tr><td>Carrier:
+			<td> <input type="text" id="carrier"> </td>
+			</tr><tr><td>OS:
+			<td> <input type="text" id="os"> </td>
+			</tr><tr><td>Storage:
+			<td> <input type="text" id="storage"> </td>
+			</tr><tr><td>Price:
+			<td> <input type="text" id="price"> </td>
+			</tr>
+ 			</table>
+ 			<input type="submit" value="Submit">
+		</form>
+
+	</body>
+</html>
