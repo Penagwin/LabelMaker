@@ -7,6 +7,7 @@ os:
 
 
 before_install:
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then apt-get install sshpass; fi
   - npm i
 script:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then node_modules/.bin/build -m; fi
