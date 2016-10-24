@@ -9,8 +9,8 @@ os:
 before_install:
   - npm i
 script:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then node_modules/.bin/build -m
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then node_modules/.bin/build -l
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then node_modules/.bin/build -m; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then node_modules/.bin/build -l; fi
   - zip -r dist.zip dist
 after_success:
     "curl --ftp-create-dirs -T uploadfilename -u $FTP_USER:$FTP_PASSWORD ftp://bedrock.penagw.in/phoneTemplate"
